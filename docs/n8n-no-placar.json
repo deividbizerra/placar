@@ -1,0 +1,55 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://placar.SEU-SUBDOMINIO.workers.dev/wh/n8n/guia-oracoes",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  event: 'lead',\n  lead_id: $json.lead_id,\n  utm_source: $json.utm_source, utm_medium: $json.utm_medium, utm_campaign: $json.utm_campaign,\n  utm_content: $json.utm_content, utm_term: $json.utm_term,\n  fbc: $json.fbc, fbp: $json.fbp\n}) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "name": "Placar · lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://placar.SEU-SUBDOMINIO.workers.dev/wh/n8n/guia-oracoes",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  event: 'paid',\n  order_id: $json.pedido_id,\n  lead_id: $json.lead_id,\n  amount: $json.valor,\n  method: 'pix',\n  product: $json.produto,\n  paid_at: $now.toISO(),\n  customer: { name: $json.nome, email: $json.email, phone: $json.telefone },\n  utm_source: $json.utm_source, utm_medium: $json.utm_medium, utm_campaign: $json.utm_campaign,\n  utm_content: $json.utm_content, utm_term: $json.utm_term,\n  fbc: $json.fbc, fbp: $json.fbp\n}) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "name": "Placar · venda paga",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        0,
+        200
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 2000,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {}
+}

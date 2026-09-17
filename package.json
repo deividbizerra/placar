@@ -1,0 +1,15 @@
+{
+  "name": "placar",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && wrangler dev",
+    "db:local": "wrangler d1 migrations apply placar --local",
+    "db:remote": "wrangler d1 migrations apply placar --remote",
+    "deploy": "node build.mjs && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

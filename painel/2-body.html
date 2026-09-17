@@ -1,0 +1,24 @@
+<header class="top">
+  <div class="top-in">
+    <div class="brand"><b>Placar</b><span>tráfego pago · só venda paga</span></div>
+    <select id="offer" class="sel" aria-label="Oferta"></select>
+    <div class="seg" id="presets" role="group" aria-label="Período">
+      <button type="button" data-p="today">Hoje</button><button type="button" data-p="yesterday">Ontem</button><button type="button" data-p="7">7d</button><button type="button" data-p="14">14d</button><button type="button" data-p="30">30d</button>
+    </div>
+    <div class="ctl dates">
+      <input id="from" class="inp" type="date" aria-label="De">
+      <input id="to" class="inp" type="date" aria-label="Até">
+    </div>
+    <span class="spacer"></span>
+    <div class="ctl">
+      <button type="button" class="btn" id="refresh">Atualizar</button>
+      <button type="button" class="btn" id="sync">Sincronizar Meta</button>
+      <button type="button" class="btn pri" id="goConfig">Ofertas</button>
+    </div>
+  </div>
+</header>
+<div class="demo-flag" id="demoFlag" hidden><div><b>Dados de exemplo.</b> Nenhum número aqui é real — é o painel rodando sobre um gerador fictício, pra você aprovar os cards antes de ligarmos nas APIs. Ações (pausar, orçamento, editar oferta) mudam só esta tela.</div></div>
+<div class="demo-flag" id="liveFlag" hidden><div style="background:var(--good-bg);color:var(--ink)"><b style="color:var(--good)">Ao vivo.</b> <span></span></div></div>
+<div class="demo-flag" id="snapFlag" hidden><div style="background:var(--good-bg);color:var(--ink)"><b style="color:var(--good)">Meta conectada.</b> <span></span></div></div>
+<main id="main" aria-live="polite"></main>
+<dialog id="dlg"><form method="dialog" id="dlgForm"><h3 id="dlgTitle"></h3><div id="dlgBody"></div><div class="acts"><button class="btn" value="cancel" type="submit">Cancelar</button><button class="btn pri" value="ok" type="submit" id="dlgOk">Confirmar</button></div></form></dialog>

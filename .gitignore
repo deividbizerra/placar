@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env
+painel/dist/
+chave-do-painel.txt
+config-local.txt

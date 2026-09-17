@@ -1,0 +1,3 @@
+# Copie para .dev.vars (uso local com `npx wrangler dev`). Não versionar.
+PAINEL_KEY=troque-por-uma-chave-longa
+META_TOKEN=token-do-usuario-do-sistema

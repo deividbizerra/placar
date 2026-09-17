@@ -1,0 +1,24 @@
+name = "placar"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "placar"
+database_id = "COLE_O_ID_DO_D1_AQUI"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["*/30 * * * *"]
+
+[[rules]]
+type = "Text"
+globs = ["**/*.html"]
+fallthrough = true
+
+[vars]
+META_API_VERSION = "v25.0"
+# Painel ao vivo (mesmo do Placar Meta): contas mostradas e fluxo do n8n que entrega vendas/leads/dólar
+LIVE_ACCOUNTS = '[{"id":"1314234857567715","name":"BM NOVA","currency":"USD"},{"id":"917690753512280","name":"Lary","currency":"USD"}]'
+# N8N_DADOS_URL fica como secret (npx wrangler secret put N8N_DADOS_URL) — o deploy.ps1 grava a partir de config-local.txt
+# Secrets (NUNCA aqui): PAINEL_KEY, META_TOKEN  →  npx wrangler secret put <NOME>
